@@ -1,0 +1,12 @@
+# Conda
+.env
+__pycache__/
+
+# Audio & data
+*.mp3
+*.wav
+recordings/
+
+# OS
+Thumbs.db
+.DS_Store
