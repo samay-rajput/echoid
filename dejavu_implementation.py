@@ -18,7 +18,7 @@ def main():
     djv.fingerprint_directory("known_songs/", [".mp3", ".wav", ".m4a"])
 
     # Example recognition
-    result = djv.recognize(FileRecognizer, "query/lowVolumeKillaKlassic_.m4a")
+    result = djv.recognize(FileRecognizer, "query/narmahatLaptop.m4a")
     print(result)
 
 if __name__ == "__main__":
