@@ -1,0 +1,22 @@
+# Conda
+.env
+__pycache__/
+
+# Audio & data
+*.mp3
+*.wav
+*.m4a
+recordings/
+evaluation/
+known_songs/
+queries/ 
+query/ 
+
+
+# OS
+Thumbs.db
+.DS_Store
+
+shazam-implementation-chat-chatgpt.txt
+Shazam_Implementation_Full.pdf
+mychat.py
