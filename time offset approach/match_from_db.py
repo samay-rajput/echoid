@@ -36,6 +36,7 @@ def identify_song(query_audio, min_vote_threshold=100, ratio_threshold=2.5):
 
     all_hashes = list(query_hash_map.keys())
 
+    # db lookup (only one queryy to  get all the hashes).
     cursor = fingerprints_col.find(
         { "hash": { "$in": all_hashes } },
         { "hash": 1, "song_id": 1, "t_anchor": 1, "_id": 0 }
@@ -51,7 +52,7 @@ def identify_song(query_audio, min_vote_threshold=100, ratio_threshold=2.5):
             votes[song_id][offset] += 1
 
 
-    # 3. Decide best song
+    # decide best song
     best_song, best_votes, best_offset = None, 0, None
 
     second_best_votes = None
@@ -68,7 +69,7 @@ def identify_song(query_audio, min_vote_threshold=100, ratio_threshold=2.5):
     if best_votes < min_vote_threshold:
         return None , best_votes, "LOW CONFIDENCE"
     
-    if second_best_votes > 0 and best_votes/second_best_votes < RATIO_THRESHOLD:
+    if second_best_votes > 0 and best_votes/second_best_votes < ratio_threshold:
         return None, best_votes, "Song Not in DB"
 
 
