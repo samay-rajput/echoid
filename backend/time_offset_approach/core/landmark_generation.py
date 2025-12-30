@@ -42,6 +42,6 @@ def generate_landmarks(audio_path, fanout=5, max_dt=2.0):
             if targets >= fanout:
                 break
 
-    # print("landmarks are generated!")
+    print("landmarks are generated!")
 
     return landmarks

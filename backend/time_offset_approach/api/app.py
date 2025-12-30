@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import tempfile, os, subprocess
 from fastapi.params import Form
 from time_offset_approach.db.match_from_db import identify_song
@@ -8,6 +9,14 @@ from time_offset_approach.integrations.spotify_search import search_spotify , pa
 
 app = FastAPI(title="Audio Fingerprinting API")
 
+# Enable CORS for frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, specify exact origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health")

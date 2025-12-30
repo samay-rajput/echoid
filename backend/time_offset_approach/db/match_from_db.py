@@ -72,8 +72,6 @@ def identify_song(query_audio, min_vote_threshold=100, ratio_threshold=2.5):
 
     if best_votes < min_vote_threshold:
         return None , best_votes, "LOW CONFIDENCE"
-
-
     return best_id, best_votes, "MATCHED!"
 
 
