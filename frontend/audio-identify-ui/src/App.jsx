@@ -93,7 +93,7 @@ function App() {
 
       timeoutRef.current = setTimeout(() => {
         stopRecording(false);
-      }, 10000);
+      }, 15000);
     } catch (err) {
       console.error("Microphone error:", err);
       setError("Microphone access denied. Please allow microphone permissions.");
@@ -213,7 +213,7 @@ function App() {
               </button>
               <p style={styles.hint}>
                 <span style={styles.hintIcon}>⏱</span>
-                Recording stops after 10 seconds
+                Recording stops after 15 seconds
               </p>
             </div>
           )}
