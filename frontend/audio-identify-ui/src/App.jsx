@@ -231,7 +231,7 @@ function App() {
               </div>
               <div style={styles.recordingInfo}>
                 <p style={styles.listeningText}>Listening...</p>
-                <p style={styles.timer}>{recordingTime}s / 10s</p>
+                <p style={styles.timer}>{recordingTime}s / 15s</p>
                 <div style={styles.progressBar}>
                   <div
                     style={{
@@ -308,7 +308,7 @@ function App() {
                   </p>
                   {/* <div style={styles.metaChips}>
                     <span style={styles.metaChip}>HQ Match</span>
-                    <span style={styles.metaChip}>10s Sample</span>
+                    <span style={styles.metaChip}>15s Sample</span>
                   </div> */}
                 </div>
                 <a
