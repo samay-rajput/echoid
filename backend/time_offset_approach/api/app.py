@@ -7,7 +7,7 @@ from time_offset_approach.db.db import songs_col
 from time_offset_approach.db.index_to_db import index_song
 from time_offset_approach.integrations.spotify_search import search_spotify , parse_spotify_results
 
-app = FastAPI(title="Audio Fingerprinting API")
+app = FastAPI()
 
 # Enable CORS for frontend
 app.add_middleware(
