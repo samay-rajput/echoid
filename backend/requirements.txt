@@ -11,3 +11,4 @@ soxr
 
 requests
 python-multipart
+matplotlib
