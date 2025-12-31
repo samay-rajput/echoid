@@ -127,7 +127,7 @@ function App() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("https://shazam-service.onrender.com/identify", {
+      const response = await fetch("https://echoid-backend.vercel.app/identify", {
         method: "POST",
         body: formData,
       });
