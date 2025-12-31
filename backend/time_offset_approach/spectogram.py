@@ -1,33 +1,28 @@
+import librosa
+import librosa.display
+import matplotlib.pyplot as plt
 import numpy as np
-import soundfile as sf
 
 # Load one audio file
-def plot_spectogram(audio_path):
-    y, sr = sf.read(audio_path)
-
-    # convert to mono if stereo
-    if y.ndim > 1:
-        y = np.mean(y, axis=1)
+def plot_spectogram(audio_path): 
+    y, sr = librosa.load(audio_path, mono=True)
 
     print("Duration (sec):", len(y) / sr)
     print("Sample rate:", sr)
 
     # Compute spectrogram
-    n_fft = 2048
-    hop_length = 512
+    S = np.abs(librosa.stft(y))  #returns the 2d array. (freqxtime)
 
-    # frame the signal
-    frames = []
-    for i in range(0, len(y) - n_fft, hop_length):
-        frames.append(y[i : i + n_fft])
+    #converted into the db
+    S_db = librosa.amplitude_to_db(S, ref=np.max)
 
-    frames = np.array(frames)
-
-    # apply FFT
-    S = np.abs(np.fft.rfft(frames, axis=1)).T  # freq x time
-
-    # converted into the db
-    S_db = 20 * np.log10(S + 1e-10)  # avoid log(0)
+    # Plot
+    # plt.figure(figsize=(10, 4))
+    # librosa.display.specshow(S_db, sr=sr, x_axis="time", y_axis="hz")
+    # plt.colorbar(format="%+2.0f dB")
+    # plt.title("Spectrogram")
+    # plt.tight_layout()
+    # plt.show()
 
     return S_db, sr
 

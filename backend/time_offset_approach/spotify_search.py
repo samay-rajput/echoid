@@ -1,7 +1,15 @@
+import os
 import requests
-import json
+from dotenv import load_dotenv
 
-RAPIDAPI_KEY = "1c324420b5msh29a97c2f356f964p1370f0jsneec2c6ac2a8c"
+load_dotenv()
+
+
+RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY")
+
+if not RAPIDAPI_KEY:
+    raise RuntimeError("RAPIDAPI_KEY is not set")
+
 
 def search_spotify(query, type="tracks", limit=1):
     url = "https://spotify23.p.rapidapi.com/search/"

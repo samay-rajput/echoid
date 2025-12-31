@@ -1,23 +1,34 @@
-
+import os
+from pathlib import Path
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+from dotenv import load_dotenv
 
-uri = "mongodb+srv://echoid_user:echoid_user1202@echoid-cluster.pqcxbji.mongodb.net/?appName=echoid-cluster"
+# Load .env from the same directory as this script
+env_path = Path(__file__).parent / ".env"
+load_dotenv(dotenv_path=env_path, override=True)
 
-# Create a new client and connect to the server
-client = MongoClient(uri, server_api=ServerApi('1'))
+# Read Mongo URI from environment variable
+uri = os.getenv("MONGO_URI")
 
-# Send a ping to confirm a successful connection
+if not uri:
+    raise RuntimeError("MONGO_URI is not set")
+
+# Create MongoDB client
+client = MongoClient(uri, server_api=ServerApi("1"))
+
+# Optional: ping only for local debug
 try:
-    client.admin.command('ping')
-    print("Pinged your deployment. You successfully connected to MongoDB!")
+    client.admin.command("ping")
+    print("MongoDB connected")
 except Exception as e:
-    print(e)
+    print("MongoDB connection failed:", e)
 
 db = client.audio_matcher
 
 songs_col = db.songs
 fingerprints_col = db.fingerprints
+
 
 
 #to check the collection!
@@ -38,6 +49,6 @@ if __name__ == "__main__":
     print(songs_col.count_documents({}))
     print(fingerprints_col.count_documents({}))
 
-    songs_col.insert_one({"test": "hello"})
+    # songs_col.insert_one({"test": "hello"})
 
 
