@@ -1,5 +1,31 @@
 import { useState, useRef, useEffect } from "react";
 
+const MicIcon = () => (
+  <svg
+    width="48"
+    height="48"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a1 1 0 1 1 2 0 7 7 0 0 1-6 6.93V21h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3v-3.07A7 7 0 0 1 5 11a1 1 0 0 1 2 0 5 5 0 0 0 10 0Z" />
+  </svg>
+);
+
+const LogoIcon = () => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path d="M9 3v12.17A3 3 0 1 0 11 18V8h5v6.17A3 3 0 1 0 18 16V3H9Z" />
+  </svg>
+);
+
 function App() {
   const [isRecording, setIsRecording] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -156,7 +182,9 @@ function App() {
         <header style={styles.header}>
           <div style={styles.logoContainer}>
             <div style={styles.logoWrapper}>
-              <span style={styles.logoIcon}>🎵</span>
+              <span style={styles.logoIcon} aria-hidden="true">
+                <LogoIcon />
+              </span>
             </div>
             <div>
               <h1 style={styles.title}>EchoID</h1>
@@ -177,7 +205,9 @@ function App() {
               <div style={styles.buttonGlow}></div>
               <button onClick={startRecording} style={styles.identifyButton}>
                 <div style={styles.buttonInner}>
-                  <span style={styles.buttonIcon}>🎤</span>
+                  <span style={styles.buttonIcon} aria-hidden="true">
+                    <MicIcon />
+                  </span>
                   <span style={styles.buttonText}>Tap to Identify</span>
                 </div>
               </button>
@@ -504,7 +534,15 @@ const styles = {
     boxShadow: "0 8px 32px rgba(102, 126, 234, 0.4)",
   },
   logoIcon: {
-    fontSize: "28px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "32px",
+    height: "32px",
+    color: "#fff",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    MozUserSelect: "none",
   },
   title: {
     color: "#fff",
@@ -564,6 +602,9 @@ const styles = {
     boxShadow: "0 20px 60px rgba(102, 126, 234, 0.5), inset 0 1px 0 rgba(255,255,255,0.2)",
     transition: "all 0.3s ease",
     position: "relative",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    MozUserSelect: "none",
   },
   buttonInner: {
     width: "100%",
@@ -575,10 +616,21 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     gap: "8px",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    MozUserSelect: "none",
   },
   buttonIcon: {
-    fontSize: "48px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "56px",
+    height: "56px",
+    color: "#fff",
     filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.3))",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    MozUserSelect: "none",
   },
   buttonText: {
     color: "#fff",
@@ -586,6 +638,9 @@ const styles = {
     fontWeight: "700",
     textTransform: "uppercase",
     letterSpacing: "1px",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    MozUserSelect: "none",
   },
   hint: {
     color: "#64748b",
