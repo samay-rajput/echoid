@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "backend/time_offset_approach/api/app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "backend/time_offset_approach/api/app.py"
+    }
+  ]
+}
