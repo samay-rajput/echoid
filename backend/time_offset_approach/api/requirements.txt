@@ -6,6 +6,5 @@ pymongo
 requests
 
 numpy
-librosa
 soundfile
 soxr
