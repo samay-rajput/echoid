@@ -1,14 +1,12 @@
 fastapi
 uvicorn
+python-multipart
+
 pymongo
-python-dotenv
+requests
 
 numpy
 scipy
 librosa
 soundfile
 soxr
-
-requests
-python-multipart
-matplotlib
